@@ -1,0 +1,28 @@
+PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - CocoaAsyncSocket (7.6.5)
+  - CocoaMQTT (2.0.2):
+    - CocoaMQTT/Core (= 2.0.2)
+  - CocoaMQTT/Core (2.0.2):
+    - CocoaAsyncSocket (~> 7.6.5)
+
+DEPENDENCIES:
+  - Charts
+  - CocoaMQTT
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - CocoaAsyncSocket
+    - CocoaMQTT
+
+SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  CocoaMQTT: 2cab338fe04820d1e32aa20809e4d141a4118f0a
+
+PODFILE CHECKSUM: 48a5e6ad4d2379c399c27f341ccc3029b3bfaab8
+
+COCOAPODS: 1.11.2

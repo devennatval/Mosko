@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F095700B197BE1301529CD4 /* Pods_Mosko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0389FDC828F19F51C957A5 /* Pods_Mosko.framework */; };
+		E23AE3D22778EDCA0018F08B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23AE3D12778EDCA0018F08B /* Assets.xcassets */; };
+		E23AE3D52778EDCA0018F08B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E23AE3D42778EDCA0018F08B /* Preview Assets.xcassets */; };
+		E23AE4012779AD6A0018F08B /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE3FB2779AD690018F08B /* Temperature.swift */; };
+		E23AE4022779AD6A0018F08B /* MQTTAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE3FD2779AD690018F08B /* MQTTAppState.swift */; };
+		E23AE4032779AD6A0018F08B /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE3FE2779AD690018F08B /* MQTTManager.swift */; };
+		E23AE4042779AD6A0018F08B /* HistoryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4002779AD690018F08B /* HistoryChartView.swift */; };
+		E23AE4292779AE370018F08B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE41C2779AE370018F08B /* SettingsView.swift */; };
+		E23AE42A2779AE370018F08B /* LimitSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE41E2779AE370018F08B /* LimitSliderView.swift */; };
+		E23AE42B2779AE370018F08B /* SettingTextRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE41F2779AE370018F08B /* SettingTextRowView.swift */; };
+		E23AE42C2779AE370018F08B /* moskoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4212779AE370018F08B /* moskoApp.swift */; };
+		E23AE42D2779AE370018F08B /* UDHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4232779AE370018F08B /* UDHelper.swift */; };
+		E23AE42E2779AE370018F08B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4252779AE370018F08B /* OnBoardingView.swift */; };
+		E23AE42F2779AE370018F08B /* PondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4272779AE370018F08B /* PondViewModel.swift */; };
+		E23AE4302779AE370018F08B /* PondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4282779AE370018F08B /* PondView.swift */; };
+		E23AE43C2779AEBB0018F08B /* WeatherFetchedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4322779AEBB0018F08B /* WeatherFetchedData.swift */; };
+		E23AE43D2779AEBB0018F08B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4342779AEBB0018F08B /* BaseRequest.swift */; };
+		E23AE43E2779AEBB0018F08B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4352779AEBB0018F08B /* APIRequest.swift */; };
+		E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4372779AEBB0018F08B /* Constant.swift */; };
+		E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4392779AEBB0018F08B /* WeatherView.swift */; };
+		E23AE4412779AEBB0018F08B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65A924A7BBB62C1062A74A4B /* Pods-Mosko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosko.release.xcconfig"; path = "Target Support Files/Pods-Mosko/Pods-Mosko.release.xcconfig"; sourceTree = "<group>"; };
+		6CA9AF3283188F129A6B0105 /* Pods-Mosko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosko.debug.xcconfig"; path = "Target Support Files/Pods-Mosko/Pods-Mosko.debug.xcconfig"; sourceTree = "<group>"; };
+		E23AE3CA2778EDC80018F08B /* Mosko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosko.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23AE3D12778EDCA0018F08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E23AE3D42778EDCA0018F08B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E23AE3FB2779AD690018F08B /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		E23AE3FD2779AD690018F08B /* MQTTAppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTAppState.swift; sourceTree = "<group>"; };
+		E23AE3FE2779AD690018F08B /* MQTTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
+		E23AE4002779AD690018F08B /* HistoryChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryChartView.swift; sourceTree = "<group>"; };
+		E23AE41C2779AE370018F08B /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E23AE41E2779AE370018F08B /* LimitSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitSliderView.swift; sourceTree = "<group>"; };
+		E23AE41F2779AE370018F08B /* SettingTextRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTextRowView.swift; sourceTree = "<group>"; };
+		E23AE4212779AE370018F08B /* moskoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moskoApp.swift; sourceTree = "<group>"; };
+		E23AE4232779AE370018F08B /* UDHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDHelper.swift; sourceTree = "<group>"; };
+		E23AE4252779AE370018F08B /* OnBoardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		E23AE4272779AE370018F08B /* PondViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PondViewModel.swift; sourceTree = "<group>"; };
+		E23AE4282779AE370018F08B /* PondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PondView.swift; sourceTree = "<group>"; };
+		E23AE4322779AEBB0018F08B /* WeatherFetchedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetchedData.swift; sourceTree = "<group>"; };
+		E23AE4342779AEBB0018F08B /* BaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		E23AE4352779AEBB0018F08B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		E23AE4372779AEBB0018F08B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		E23AE4392779AEBB0018F08B /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		FE0389FDC828F19F51C957A5 /* Pods_Mosko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E23AE3C72778EDC80018F08B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F095700B197BE1301529CD4 /* Pods_Mosko.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5DCBD66A1D5062DB59BE3EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE0389FDC828F19F51C957A5 /* Pods_Mosko.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E23AE3C12778EDC80018F08B = {
+			isa = PBXGroup;
+			children = (
+				E23AE3CC2778EDC80018F08B /* Mosko */,
+				E23AE3CB2778EDC80018F08B /* Products */,
+				F626EEC64F290A5A7109C6F7 /* Pods */,
+				B5DCBD66A1D5062DB59BE3EF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E23AE3CB2778EDC80018F08B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3CA2778EDC80018F08B /* Mosko.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E23AE3CC2778EDC80018F08B /* Mosko */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3DD2779AC110018F08B /* Application */,
+				E23AE3DC2779AC030018F08B /* Core */,
+				E23AE3DB2779ABFC0018F08B /* Assets */,
+				E23AE3D12778EDCA0018F08B /* Assets.xcassets */,
+				E23AE3D32778EDCA0018F08B /* Preview Content */,
+			);
+			path = Mosko;
+			sourceTree = "<group>";
+		};
+		E23AE3D32778EDCA0018F08B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3D42778EDCA0018F08B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E23AE3DB2779ABFC0018F08B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		E23AE3DC2779AC030018F08B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3FF2779AD690018F08B /* Chart */,
+				E23AE3FA2779AD690018F08B /* Models */,
+				E23AE3FC2779AD690018F08B /* MQTT */,
+				E23AE3F42779AD510018F08B /* Weather */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E23AE3DD2779AC110018F08B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4222779AE370018F08B /* Common */,
+				E23AE4202779AE370018F08B /* Main */,
+				E23AE4242779AE370018F08B /* OnBoarding */,
+				E23AE4262779AE370018F08B /* Pond Page */,
+				E23AE41B2779AE370018F08B /* Settings Page */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E23AE3F42779AD510018F08B /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4362779AEBB0018F08B /* Constant */,
+				E23AE4332779AEBB0018F08B /* Network Service */,
+				E23AE4382779AEBB0018F08B /* View */,
+				E23AE43A2779AEBB0018F08B /* View Model */,
+				E23AE4312779AEBB0018F08B /* Weather Data */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		E23AE3FA2779AD690018F08B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3FB2779AD690018F08B /* Temperature.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E23AE3FC2779AD690018F08B /* MQTT */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE3FD2779AD690018F08B /* MQTTAppState.swift */,
+				E23AE3FE2779AD690018F08B /* MQTTManager.swift */,
+			);
+			path = MQTT;
+			sourceTree = "<group>";
+		};
+		E23AE3FF2779AD690018F08B /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4002779AD690018F08B /* HistoryChartView.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		E23AE41B2779AE370018F08B /* Settings Page */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE41C2779AE370018F08B /* SettingsView.swift */,
+				E23AE41D2779AE370018F08B /* Custom Slider */,
+				E23AE41F2779AE370018F08B /* SettingTextRowView.swift */,
+			);
+			path = "Settings Page";
+			sourceTree = "<group>";
+		};
+		E23AE41D2779AE370018F08B /* Custom Slider */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE41E2779AE370018F08B /* LimitSliderView.swift */,
+			);
+			path = "Custom Slider";
+			sourceTree = "<group>";
+		};
+		E23AE4202779AE370018F08B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4212779AE370018F08B /* moskoApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E23AE4222779AE370018F08B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4232779AE370018F08B /* UDHelper.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E23AE4242779AE370018F08B /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4252779AE370018F08B /* OnBoardingView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		E23AE4262779AE370018F08B /* Pond Page */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4272779AE370018F08B /* PondViewModel.swift */,
+				E23AE4282779AE370018F08B /* PondView.swift */,
+			);
+			path = "Pond Page";
+			sourceTree = "<group>";
+		};
+		E23AE4312779AEBB0018F08B /* Weather Data */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4322779AEBB0018F08B /* WeatherFetchedData.swift */,
+			);
+			path = "Weather Data";
+			sourceTree = "<group>";
+		};
+		E23AE4332779AEBB0018F08B /* Network Service */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4342779AEBB0018F08B /* BaseRequest.swift */,
+				E23AE4352779AEBB0018F08B /* APIRequest.swift */,
+			);
+			path = "Network Service";
+			sourceTree = "<group>";
+		};
+		E23AE4362779AEBB0018F08B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4372779AEBB0018F08B /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		E23AE4382779AEBB0018F08B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4392779AEBB0018F08B /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E23AE43A2779AEBB0018F08B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		F626EEC64F290A5A7109C6F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6CA9AF3283188F129A6B0105 /* Pods-Mosko.debug.xcconfig */,
+				65A924A7BBB62C1062A74A4B /* Pods-Mosko.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E23AE3C92778EDC80018F08B /* Mosko */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E23AE3D82778EDCA0018F08B /* Build configuration list for PBXNativeTarget "Mosko" */;
+			buildPhases = (
+				E87ADE7736511EB686AE2064 /* [CP] Check Pods Manifest.lock */,
+				E23AE3C62778EDC80018F08B /* Sources */,
+				E23AE3C72778EDC80018F08B /* Frameworks */,
+				E23AE3C82778EDC80018F08B /* Resources */,
+				C36859FB7AD964D8AAD2AC2D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mosko;
+			productName = Mosko;
+			productReference = E23AE3CA2778EDC80018F08B /* Mosko.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E23AE3C22778EDC80018F08B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					E23AE3C92778EDC80018F08B = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = E23AE3C52778EDC80018F08B /* Build configuration list for PBXProject "Mosko" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E23AE3C12778EDC80018F08B;
+			productRefGroup = E23AE3CB2778EDC80018F08B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E23AE3C92778EDC80018F08B /* Mosko */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E23AE3C82778EDC80018F08B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E23AE3D52778EDCA0018F08B /* Preview Assets.xcassets in Resources */,
+				E23AE3D22778EDCA0018F08B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C36859FB7AD964D8AAD2AC2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mosko/Pods-Mosko-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mosko/Pods-Mosko-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mosko/Pods-Mosko-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E87ADE7736511EB686AE2064 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mosko-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E23AE3C62778EDC80018F08B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E23AE42D2779AE370018F08B /* UDHelper.swift in Sources */,
+				E23AE4412779AEBB0018F08B /* WeatherViewModel.swift in Sources */,
+				E23AE4292779AE370018F08B /* SettingsView.swift in Sources */,
+				E23AE42A2779AE370018F08B /* LimitSliderView.swift in Sources */,
+				E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */,
+				E23AE42E2779AE370018F08B /* OnBoardingView.swift in Sources */,
+				E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */,
+				E23AE42F2779AE370018F08B /* PondViewModel.swift in Sources */,
+				E23AE4302779AE370018F08B /* PondView.swift in Sources */,
+				E23AE4042779AD6A0018F08B /* HistoryChartView.swift in Sources */,
+				E23AE42C2779AE370018F08B /* moskoApp.swift in Sources */,
+				E23AE43C2779AEBB0018F08B /* WeatherFetchedData.swift in Sources */,
+				E23AE4022779AD6A0018F08B /* MQTTAppState.swift in Sources */,
+				E23AE43D2779AEBB0018F08B /* BaseRequest.swift in Sources */,
+				E23AE42B2779AE370018F08B /* SettingTextRowView.swift in Sources */,
+				E23AE4012779AD6A0018F08B /* Temperature.swift in Sources */,
+				E23AE43E2779AEBB0018F08B /* APIRequest.swift in Sources */,
+				E23AE4032779AD6A0018F08B /* MQTTManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E23AE3D62778EDCA0018F08B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E23AE3D72778EDCA0018F08B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E23AE3D92778EDCA0018F08B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CA9AF3283188F129A6B0105 /* Pods-Mosko.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mosko/Preview Content\"";
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devennatval.Mosko;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E23AE3DA2778EDCA0018F08B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65A924A7BBB62C1062A74A4B /* Pods-Mosko.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mosko/Preview Content\"";
+				DEVELOPMENT_TEAM = WH8Y79ZARL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devennatval.Mosko;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E23AE3C52778EDC80018F08B /* Build configuration list for PBXProject "Mosko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E23AE3D62778EDCA0018F08B /* Debug */,
+				E23AE3D72778EDCA0018F08B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E23AE3D82778EDCA0018F08B /* Build configuration list for PBXNativeTarget "Mosko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E23AE3D92778EDCA0018F08B /* Debug */,
+				E23AE3DA2778EDCA0018F08B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E23AE3C22778EDC80018F08B /* Project object */;
+}
