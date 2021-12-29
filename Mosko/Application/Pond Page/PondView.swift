@@ -11,23 +11,17 @@ struct PondView: View {
     @StateObject var mqttManager = MQTTManager.shared()
     @ObservedObject var pondViewModel = PondViewModel()
     
+    func publishloop() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            mqttManager.publish(with: String(Double.random(in: 25..<27)))
+            publishloop()
+        }
+        
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
-//                WeatherView()
-                Button(action: {
-                    mqttManager.initializeMQTT(username: "samuelmaynard13@gmail.com", password: "moskouser")
-                    mqttManager.connect()
-                }, label: {
-                    Text("Init and Connect MQTT")
-                })
-                
-                
-                Button(action: {
-                    mqttManager.subscribe(topic: "Mosko")
-                }, label: {
-                    Text("SUBS")
-                })
                 Text(pondViewModel.pondName)
                     .font(.system(.title))
                 HStack {
@@ -37,11 +31,13 @@ struct PondView: View {
                 .font(.system(.title3))
                 HStack {
                     Image(systemName: "circle.fill")
-                        .foregroundColor(.green)
-                    Text("Connected")
+                        .foregroundColor(
+                            mqttManager.currentAppState.appConnectionState.isConnected ? .green : .red
+                        )
+                    Text(mqttManager.currentAppState.appConnectionState.isConnected ? "Connected" : "Disconnected")
                 }
                 HStack{
-                    Text("25º")
+                    Text((mqttManager.currentAppState.historyText.last?.prefix(4) ?? "--") + "ºC")
                     .font(.system(size: 48))
                 }
                 HStack {
@@ -87,7 +83,7 @@ struct PondView: View {
             .navigationBarItems(
                 leading:
                     HStack {
-//                        WeatherView()
+                        WeatherView()
                     }
                 , trailing: Button(action: {
                     pondViewModel.isEditSetting.toggle()
@@ -96,7 +92,18 @@ struct PondView: View {
                         .foregroundColor(.black)
                 }))
         }
-        
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                mqttManager.initializeMQTT(username: "samuelmaynard13@gmail.com", password: "moskouser")
+                mqttManager.connect()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                mqttManager.subscribe(topic: "samuelmaynard13@gmail.com/Mosko")
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                publishloop()
+            }
+        }
         .environmentObject(mqttManager)
     }
 }

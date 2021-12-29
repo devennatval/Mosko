@@ -28,11 +28,16 @@
 		E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4372779AEBB0018F08B /* Constant.swift */; };
 		E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4392779AEBB0018F08B /* WeatherView.swift */; };
 		E23AE4412779AEBB0018F08B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */; };
+		E23AE4432779B27D0018F08B /* tryMQTT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4422779B27D0018F08B /* tryMQTT.swift */; };
+		E23AE48C2779B6C00018F08B /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48B2779B6C00018F08B /* CocoaAsyncSocket */; };
+		E23AE48F2779B6DE0018F08B /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48E2779B6DE0018F08B /* CocoaMQTT */; };
+		E23AE4912779B6DE0018F08B /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE4902779B6DE0018F08B /* CocoaMQTTWebSocket */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		65A924A7BBB62C1062A74A4B /* Pods-Mosko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosko.release.xcconfig"; path = "Target Support Files/Pods-Mosko/Pods-Mosko.release.xcconfig"; sourceTree = "<group>"; };
 		6CA9AF3283188F129A6B0105 /* Pods-Mosko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosko.debug.xcconfig"; path = "Target Support Files/Pods-Mosko/Pods-Mosko.debug.xcconfig"; sourceTree = "<group>"; };
+		E2061BF6277C72D9002EED74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E23AE3CA2778EDC80018F08B /* Mosko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23AE3D12778EDCA0018F08B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E23AE3D42778EDCA0018F08B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 		E23AE4372779AEBB0018F08B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E23AE4392779AEBB0018F08B /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		E23AE4422779B27D0018F08B /* tryMQTT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tryMQTT.swift; sourceTree = "<group>"; };
 		FE0389FDC828F19F51C957A5 /* Pods_Mosko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -62,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23AE4912779B6DE0018F08B /* CocoaMQTTWebSocket in Frameworks */,
+				E23AE48C2779B6C00018F08B /* CocoaAsyncSocket in Frameworks */,
+				E23AE48F2779B6DE0018F08B /* CocoaMQTT in Frameworks */,
 				7F095700B197BE1301529CD4 /* Pods_Mosko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +107,7 @@
 		E23AE3CC2778EDC80018F08B /* Mosko */ = {
 			isa = PBXGroup;
 			children = (
+				E2061BF6277C72D9002EED74 /* Info.plist */,
 				E23AE3DD2779AC110018F08B /* Application */,
 				E23AE3DC2779AC030018F08B /* Core */,
 				E23AE3DB2779ABFC0018F08B /* Assets */,
@@ -229,6 +239,7 @@
 			children = (
 				E23AE4272779AE370018F08B /* PondViewModel.swift */,
 				E23AE4282779AE370018F08B /* PondView.swift */,
+				E23AE4422779B27D0018F08B /* tryMQTT.swift */,
 			);
 			path = "Pond Page";
 			sourceTree = "<group>";
@@ -301,6 +312,11 @@
 			dependencies = (
 			);
 			name = Mosko;
+			packageProductDependencies = (
+				E23AE48B2779B6C00018F08B /* CocoaAsyncSocket */,
+				E23AE48E2779B6DE0018F08B /* CocoaMQTT */,
+				E23AE4902779B6DE0018F08B /* CocoaMQTTWebSocket */,
+			);
 			productName = Mosko;
 			productReference = E23AE3CA2778EDC80018F08B /* Mosko.app */;
 			productType = "com.apple.product-type.application";
@@ -329,6 +345,10 @@
 				Base,
 			);
 			mainGroup = E23AE3C12778EDC80018F08B;
+			packageReferences = (
+				E23AE48A2779B6C00018F08B /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+				E23AE48D2779B6DE0018F08B /* XCRemoteSwiftPackageReference "CocoaMQTT" */,
+			);
 			productRefGroup = E23AE3CB2778EDC80018F08B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -403,6 +423,7 @@
 				E23AE42A2779AE370018F08B /* LimitSliderView.swift in Sources */,
 				E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */,
 				E23AE42E2779AE370018F08B /* OnBoardingView.swift in Sources */,
+				E23AE4432779B27D0018F08B /* tryMQTT.swift in Sources */,
 				E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */,
 				E23AE42F2779AE370018F08B /* PondViewModel.swift in Sources */,
 				E23AE4302779AE370018F08B /* PondView.swift in Sources */,
@@ -549,11 +570,15 @@
 				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mosko/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,11 +604,15 @@
 				DEVELOPMENT_TEAM = WH8Y79ZARL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mosko/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -619,6 +648,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E23AE48A2779B6C00018F08B /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/robbiehanson/CocoaAsyncSocket";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		E23AE48D2779B6DE0018F08B /* XCRemoteSwiftPackageReference "CocoaMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emqx/CocoaMQTT";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E23AE48B2779B6C00018F08B /* CocoaAsyncSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E23AE48A2779B6C00018F08B /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
+			productName = CocoaAsyncSocket;
+		};
+		E23AE48E2779B6DE0018F08B /* CocoaMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E23AE48D2779B6DE0018F08B /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTT;
+		};
+		E23AE4902779B6DE0018F08B /* CocoaMQTTWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E23AE48D2779B6DE0018F08B /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTTWebSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E23AE3C22778EDC80018F08B /* Project object */;
 }

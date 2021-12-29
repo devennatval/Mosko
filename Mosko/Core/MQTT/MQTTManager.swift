@@ -12,8 +12,6 @@ import Combine
 
 final class MQTTManager: ObservableObject {
     private var mqttClient: CocoaMQTT?
-    private var identifier: String!
-    private var host: String!
     private var topic: String!
     private var username: String!
     private var password: String!
@@ -38,19 +36,17 @@ final class MQTTManager: ObservableObject {
         return _shared
     }
 
-    func initializeMQTT(host: String = "maqiatto.com", username: String? = nil, password: String? = nil) {
+    func initializeMQTT(username: String? = nil, password: String? = nil) {
         // If any previous instance exists then clean it
         if mqttClient != nil {
             mqttClient = nil
         }
-        self.host = host
         self.username = username
         self.password = password
         let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
 
         // TODO: Guard
-        mqttClient = CocoaMQTT(clientID: clientID, host: host, port: 1883)
-        print("init complete")
+        mqttClient = CocoaMQTT(clientID: clientID, host: "maqiatto.com", port: 1883)
         // If a server has username and password, pass it here
         if let finalusername = self.username, let finalpassword = self.password {
             mqttClient?.username = finalusername
@@ -59,12 +55,13 @@ final class MQTTManager: ObservableObject {
         mqttClient?.willMessage = CocoaMQTTMessage(topic: "/will", string: "dieout")
         mqttClient?.keepAlive = 60
         mqttClient?.delegate = self
+        
     }
 
     func connect() {
         if let success = mqttClient?.connect(), success {
             currentAppState.setAppConnectionState(state: .connecting)
-            print("connected bruh")
+            
         } else {
             currentAppState.setAppConnectionState(state: .disconnected)
         }
@@ -93,10 +90,6 @@ final class MQTTManager: ObservableObject {
         mqttClient?.unsubscribe(topic)
     }
     
-    func currentHost() -> String? {
-        return host
-    }
-    
     func isSubscribed() -> Bool {
        return currentAppState.appConnectionState.isSubscribed
     }
@@ -111,17 +104,12 @@ final class MQTTManager: ObservableObject {
 }
 
 extension MQTTManager: CocoaMQTTDelegate {
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
-        TRACE("topic: \(String(topic))")
-        currentAppState.setAppConnectionState(state: .connectedUnSubscribed)
-        currentAppState.clearData()
-    }
     
-    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
-        TRACE("topic: \(success)")
-        currentAppState.setAppConnectionState(state: .connectedSubscribed)
+    func mqtt(_ mqtt: CocoaMQTT, didReceive trust: SecTrust, completionHandler: @escaping (Bool) -> Void) {
+        TRACE("trust: \(trust)")
+        // true -> trust the SSL connection
+        completionHandler(true)
     }
-    
 
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         TRACE("ack: \(ack)")
@@ -130,7 +118,11 @@ extension MQTTManager: CocoaMQTTDelegate {
             currentAppState.setAppConnectionState(state: .connected)
         }
     }
-
+    
+    func mqtt(_ mqtt: CocoaMQTT, didStateChangeTo state: CocoaMQTTConnState) {
+        TRACE("new state: \(state)")
+    }
+    
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         TRACE("message: \(message.string.description), id: \(id)")
     }
@@ -142,6 +134,17 @@ extension MQTTManager: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
         TRACE("message: \(message.string.description), id: \(id)")
         currentAppState.setReceivedMessage(text: message.string.description)
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
+        TRACE("topic: \(topics)")
+        currentAppState.setAppConnectionState(state: .connectedUnSubscribed)
+        currentAppState.clearData()
+    }
+    
+    func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
+        TRACE("subscribed: \(success), failed: \(failed)")
+        currentAppState.setAppConnectionState(state: .connectedSubscribed)
     }
     
     func mqttDidPing(_ mqtt: CocoaMQTT) {

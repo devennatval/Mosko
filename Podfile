@@ -6,6 +6,5 @@ target 'Mosko' do
   use_frameworks!
 
   # Pods for Mosko
-  pod 'CocoaMQTT'
   pod 'Charts'
 end

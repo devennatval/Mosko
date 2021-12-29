@@ -50,17 +50,17 @@ enum MQTTAppConnectionState {
 
 final class MQTTAppState: ObservableObject {
     @Published var appConnectionState: MQTTAppConnectionState = .disconnected
-    @Published var historyText: String = ""
+    @Published var historyText: [String] = []
     private var receivedMessage: String = ""
 
     func setReceivedMessage(text: String) {
         receivedMessage = text
-        historyText = historyText + "\n" + receivedMessage
+        historyText.append(receivedMessage)
     }
 
     func clearData() {
         receivedMessage = ""
-        historyText = ""
+        historyText = []
     }
 
     func setAppConnectionState(state: MQTTAppConnectionState) {
