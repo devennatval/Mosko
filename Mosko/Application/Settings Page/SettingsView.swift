@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    
+    @StateObject var mqttManager = MQTTManager.shared()
     @StateObject var pondViewModel: PondViewModel
  
     var body: some View {
@@ -60,12 +60,18 @@ struct SettingsView: View {
                     Text("Cancel")
                 })
                 ,trailing: Button(action: {
-                    pondViewModel.saveData()
-                    dismiss.callAsFunction()
+                    if mqttManager.currentAppState.action != "Off" {
+                        if pondViewModel.pondName != "" && pondViewModel.fishType != "" {
+                            pondViewModel.saveData()
+                            mqttManager.publish(with: "Settings/\(String(format: "%.1f", pondViewModel.underLimit))/\(String(format: "%.1f", pondViewModel.upperLimit))/\(pondViewModel.autoCool ? 1 : 0)/\(pondViewModel.autoHeat ? 1 : 0)")
+                            dismiss.callAsFunction()
+                        }
+                    }
+                    
                 }, label: {
                     Text("Apply")
                 }))
+            .listStyle(.insetGrouped)
         }
-        .listStyle(.insetGrouped)
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class PondViewModel: ObservableObject {
-    
     @Published var pondName: String
     @Published var fishType: String
     
@@ -18,9 +17,6 @@ class PondViewModel: ObservableObject {
     
     @Published var autoCool: Bool
     @Published var autoHeat: Bool
-    
-    @Published var historySelection:Int = 1
-    @Published var isEditSetting: Bool = false
 
     init() {
         pondName = UDHelper.sharedUD.getPondName()

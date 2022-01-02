@@ -9,6 +9,10 @@ import Foundation
 enum UDKey: String{
     case newUser
     
+    case username
+    case password
+    case topic
+    
     case pondName
     case fishType
     
@@ -17,6 +21,8 @@ enum UDKey: String{
     
     case autoCool
     case autoHeat
+    
+    case temperatures
 }
 
 class UDHelper {
@@ -30,11 +36,35 @@ class UDHelper {
     }
     
     func isNewUser() -> Bool {
-        defaults.bool(forKey: UDKey.newUser.rawValue)
+        return !defaults.bool(forKey: UDKey.newUser.rawValue)
     }
     
-    func setNotNewUser() {
-        setUD(value: false, key: UDKey.newUser.rawValue)
+    func setNewUser(new: Bool) {
+        setUD(value: !new, key: UDKey.newUser.rawValue)
+    }
+    
+    func setUsername(username: String) {
+        setUD(value: username, key: UDKey.username.rawValue)
+    }
+    
+    func getUsername() -> String {
+        return defaults.string(forKey: UDKey.username.rawValue) ?? ""
+    }
+    
+    func setPassword(password: String) {
+        setUD(value: password, key: UDKey.password.rawValue)
+    }
+    
+    func getPassword() -> String {
+        return defaults.string(forKey: UDKey.password.rawValue) ?? ""
+    }
+    
+    func setTopic(topic: String) {
+        setUD(value: topic, key: UDKey.topic.rawValue)
+    }
+    
+    func getTopic() -> String {
+        return defaults.string(forKey: UDKey.topic.rawValue) ?? ""
     }
     
     func setPondName(pondName: String) {
@@ -83,5 +113,20 @@ class UDHelper {
     
     func getAutoHeat() -> Bool {
         return defaults.bool(forKey: UDKey.autoHeat.rawValue)
+    }
+    
+    func saveTemperatures(temperatures: [Temperature]) {
+        if let encodedData = try? JSONEncoder().encode(temperatures) {
+            setUD(value: encodedData, key: UDKey.temperatures.rawValue)
+        }
+    }
+    
+    func getTemperatures() -> [Temperature] {
+        guard
+            let data = defaults.data(forKey: UDKey.temperatures.rawValue),
+            let savedTemperatures = try? JSONDecoder().decode([Temperature].self, from: data)
+        else { return [] }
+        
+        return savedTemperatures
     }
 }

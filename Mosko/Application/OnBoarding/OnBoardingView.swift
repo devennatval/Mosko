@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    @State private var selection = 0
+    @Binding var isOnboardingViewShowing: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            PageTabView(selection: $selection,isOnboardingViewShowing: $isOnboardingViewShowing)
+            ButtonsView(selection: $selection)
+        }
+        .background(.green)
+        .transition(.move(edge: .bottom))
     }
 }
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(isOnboardingViewShowing: Binding.constant(true))
     }
 }

@@ -50,17 +50,41 @@ enum MQTTAppConnectionState {
 
 final class MQTTAppState: ObservableObject {
     @Published var appConnectionState: MQTTAppConnectionState = .disconnected
-    @Published var historyText: [String] = []
-    private var receivedMessage: String = ""
+    @Published var historyTemperature: [Temperature] = [] {
+        didSet {
+            UDHelper.sharedUD.saveTemperatures(temperatures: historyTemperature)
+        }
+    }
+    @Published var temperature: String = "--.-"
+    @Published var action: String = "Off"
+    
+    private var receivedMessages: [String] = []
 
     func setReceivedMessage(text: String) {
-        receivedMessage = text
-        historyText.append(receivedMessage)
+        receivedMessages = text.components(separatedBy: "/")
+        
+        if receivedMessages[0] == "Pond" {
+            let date = Date()
+            var calendar = Calendar.current
+            
+            let hour = calendar.component(.hour, from: date)
+            let minute = calendar.component(.minute, from: date)
+            
+            action = receivedMessages[2]
+            temperature = receivedMessages[1]
+            if !historyTemperature.contains(where: {$0.hour == hour && $0.minute == minute}) {
+                historyTemperature.append(Temperature(date: date, hour: hour, minute: minute, temperature: Double(temperature) ?? 0.0))
+            }
+            else {
+                historyTemperature.removeAll(where: {$0.hour == hour && $0.minute == minute})
+                historyTemperature.append(Temperature(date: date, hour: hour, minute: minute, temperature: Double(temperature) ?? 0.0))
+            }
+        }
     }
 
     func clearData() {
-        receivedMessage = ""
-        historyText = []
+        receivedMessages = []
+        historyTemperature = []
     }
 
     func setAppConnectionState(state: MQTTAppConnectionState) {

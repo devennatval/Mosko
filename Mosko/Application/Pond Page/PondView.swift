@@ -11,9 +11,13 @@ struct PondView: View {
     @StateObject var mqttManager = MQTTManager.shared()
     @ObservedObject var pondViewModel = PondViewModel()
     
+    @State var historySelection:Int = 1
+    @State var isEditSetting: Bool = false
+    @State var selectedItem = ""
+
     func publishloop() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            mqttManager.publish(with: String(Double.random(in: 25..<27)))
+            mqttManager.publish(with: "Pond/" + String(Double.random(in: pondViewModel.underLimit..<pondViewModel.upperLimit))+"/"+["Idle","Heating","Cooling"].randomElement()!)
             publishloop()
         }
         
@@ -22,24 +26,31 @@ struct PondView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(pondViewModel.pondName)
-                    .font(.system(.title))
+                HStack {
+                    Image(systemName: "circle.fill")
+                        .foregroundColor(
+                            mqttManager.currentAppState.appConnectionState.isConnected ? .green : .red
+                        )
+                    Text(pondViewModel.pondName)
+                        .font(.system(.title2))
+                }
                 HStack {
                     Image("fish")
                     Text(pondViewModel.fishType)
                 }
                 .font(.system(.title3))
                 HStack {
-                    Image(systemName: "circle.fill")
+                    Image(systemName: (mqttManager.currentAppState.action == "Cooling" ? "snowflake" : mqttManager.currentAppState.action == "Heating" ? "flame" : "zzz"))
                         .foregroundColor(
-                            mqttManager.currentAppState.appConnectionState.isConnected ? .green : .red
+                            mqttManager.currentAppState.action == "Cooling" ? .blue : mqttManager.currentAppState.action == "Heating" ? .red : .black
                         )
-                    Text(mqttManager.currentAppState.appConnectionState.isConnected ? "Connected" : "Disconnected")
+                    Text(mqttManager.currentAppState.action)
                 }
-                HStack{
-                    Text((mqttManager.currentAppState.historyText.last?.prefix(4) ?? "--") + "ºC")
-                    .font(.system(size: 48))
-                }
+                Spacer()
+//                HStack{
+                    Text((mqttManager.currentAppState.temperature.prefix(4)) + "ºC")
+                    .font(.system(.title))
+//                }
                 HStack {
                     Spacer()
                     Text("H: 20º")
@@ -47,22 +58,23 @@ struct PondView: View {
                     Text("L: 30º")
                     Spacer()
                 }
-                
                 .padding(.horizontal, 100)
-                .padding(.vertical, 1)
+                .padding(.vertical, 0)
 
                 HStack {
                     VStack {
                         Text("History")
-                        Picker("", selection: $pondViewModel.historySelection) {
+                        Picker("", selection: $historySelection) {
                             Text("Hours").tag(0)
                             Text("Days").tag(1)
                         }
                         .pickerStyle(.segmented)
-                        if pondViewModel.historySelection == 1 {
-                            HistoryChartView(entries: Temperature.dataEntriesForDay(0, temperature: Temperature.temperatureHistory))
-                        } else if pondViewModel.historySelection == 0 {
-                            HistoryChartView(entries: Temperature.dataEntriesForDay(1, temperature: Temperature.temperatureHistory))
+                        if historySelection == 1 {
+                            HistoryChartView(entries: Temperature.dataEntriesForHour( temperature: mqttManager.currentAppState.historyTemperature))
+                                .frame(height: 300)
+                            Text(selectedItem)
+                        } else if historySelection == 0 {
+                            HistoryChartView(entries: Temperature.dataEntriesForHour( temperature: mqttManager.currentAppState.historyTemperature))
                         }
                     }
                     
@@ -75,32 +87,30 @@ struct PondView: View {
 
                 .padding()
             }
-            .sheet(isPresented: $pondViewModel.isEditSetting) {
+            .sheet(isPresented: $isEditSetting) {
                 SettingsView(pondViewModel: pondViewModel)
             }
-            
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading:
                     HStack {
                         WeatherView()
                     }
-                , trailing: Button(action: {
-                    pondViewModel.isEditSetting.toggle()
-                }, label: {
-                    Image(systemName: "gear")
-                        .foregroundColor(.black)
-                }))
+                , trailing:
+                    Button(action: {
+                        isEditSetting.toggle()
+                    }, label: {
+                        Image(systemName: "gear")
+                            .foregroundColor(.black)
+                    })
+                )
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                mqttManager.initializeMQTT(username: "samuelmaynard13@gmail.com", password: "moskouser")
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                mqttManager.initializeMQTT(username: UDHelper.sharedUD.getUsername(), password: UDHelper.sharedUD.getPassword())
                 mqttManager.connect()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                mqttManager.subscribe(topic: "samuelmaynard13@gmail.com/Mosko")
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                 publishloop()
             }
         }

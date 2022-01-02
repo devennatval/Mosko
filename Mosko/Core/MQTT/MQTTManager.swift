@@ -17,6 +17,7 @@ final class MQTTManager: ObservableObject {
     private var password: String!
 
     @Published var currentAppState = MQTTAppState()
+    
     private var anyCancellable: AnyCancellable?
     // Private Init
     private init() {
@@ -24,6 +25,12 @@ final class MQTTManager: ObservableObject {
         anyCancellable = currentAppState.objectWillChange.sink { [weak self] _ in
             self?.objectWillChange.send()
         }
+//        currentAppState.historyTemperature = []
+        currentAppState.historyTemperature = UDHelper.sharedUD.getTemperatures()
+        
+        self.username = "samuelmaynard13@gmail.com"
+        self.password = "moskouser"
+        self.topic = "samuelmaynard13@gmail.com/Mosko"
     }
 
     // MARK: Shared Instance
@@ -116,6 +123,7 @@ extension MQTTManager: CocoaMQTTDelegate {
 
         if ack == .accept {
             currentAppState.setAppConnectionState(state: .connected)
+            subscribe(topic: UDHelper.sharedUD.getTopic())
         }
     }
     

@@ -28,10 +28,13 @@
 		E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4372779AEBB0018F08B /* Constant.swift */; };
 		E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4392779AEBB0018F08B /* WeatherView.swift */; };
 		E23AE4412779AEBB0018F08B /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */; };
-		E23AE4432779B27D0018F08B /* tryMQTT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23AE4422779B27D0018F08B /* tryMQTT.swift */; };
 		E23AE48C2779B6C00018F08B /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48B2779B6C00018F08B /* CocoaAsyncSocket */; };
 		E23AE48F2779B6DE0018F08B /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48E2779B6DE0018F08B /* CocoaMQTT */; };
 		E23AE4912779B6DE0018F08B /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE4902779B6DE0018F08B /* CocoaMQTTWebSocket */; };
+		E2EB87CF277E145A0081CE1C /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87CE277E145A0081CE1C /* OnboardingData.swift */; };
+		E2EB87D1277E16DB0081CE1C /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87D0277E16DB0081CE1C /* ButtonsView.swift */; };
+		E2EB87D4277E1D710081CE1C /* TabDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */; };
+		E2EB87D5277E1D710081CE1C /* PageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87D3277E1D710081CE1C /* PageTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +62,10 @@
 		E23AE4372779AEBB0018F08B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E23AE4392779AEBB0018F08B /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		E23AE4422779B27D0018F08B /* tryMQTT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tryMQTT.swift; sourceTree = "<group>"; };
+		E2EB87CE277E145A0081CE1C /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
+		E2EB87D0277E16DB0081CE1C /* ButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDetailsView.swift; sourceTree = "<group>"; };
+		E2EB87D3277E1D710081CE1C /* PageTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTabView.swift; sourceTree = "<group>"; };
 		FE0389FDC828F19F51C957A5 /* Pods_Mosko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,6 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				E23AE4252779AE370018F08B /* OnBoardingView.swift */,
+				E2EB87CE277E145A0081CE1C /* OnboardingData.swift */,
+				E2EB87D0277E16DB0081CE1C /* ButtonsView.swift */,
+				E2EB87D3277E1D710081CE1C /* PageTabView.swift */,
+				E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -239,7 +249,6 @@
 			children = (
 				E23AE4272779AE370018F08B /* PondViewModel.swift */,
 				E23AE4282779AE370018F08B /* PondView.swift */,
-				E23AE4422779B27D0018F08B /* tryMQTT.swift */,
 			);
 			path = "Pond Page";
 			sourceTree = "<group>";
@@ -423,17 +432,20 @@
 				E23AE42A2779AE370018F08B /* LimitSliderView.swift in Sources */,
 				E23AE43F2779AEBB0018F08B /* Constant.swift in Sources */,
 				E23AE42E2779AE370018F08B /* OnBoardingView.swift in Sources */,
-				E23AE4432779B27D0018F08B /* tryMQTT.swift in Sources */,
 				E23AE4402779AEBB0018F08B /* WeatherView.swift in Sources */,
 				E23AE42F2779AE370018F08B /* PondViewModel.swift in Sources */,
 				E23AE4302779AE370018F08B /* PondView.swift in Sources */,
 				E23AE4042779AD6A0018F08B /* HistoryChartView.swift in Sources */,
 				E23AE42C2779AE370018F08B /* moskoApp.swift in Sources */,
+				E2EB87D5277E1D710081CE1C /* PageTabView.swift in Sources */,
 				E23AE43C2779AEBB0018F08B /* WeatherFetchedData.swift in Sources */,
+				E2EB87D4277E1D710081CE1C /* TabDetailsView.swift in Sources */,
 				E23AE4022779AD6A0018F08B /* MQTTAppState.swift in Sources */,
 				E23AE43D2779AEBB0018F08B /* BaseRequest.swift in Sources */,
 				E23AE42B2779AE370018F08B /* SettingTextRowView.swift in Sources */,
+				E2EB87CF277E145A0081CE1C /* OnboardingData.swift in Sources */,
 				E23AE4012779AD6A0018F08B /* Temperature.swift in Sources */,
+				E2EB87D1277E16DB0081CE1C /* ButtonsView.swift in Sources */,
 				E23AE43E2779AEBB0018F08B /* APIRequest.swift in Sources */,
 				E23AE4032779AD6A0018F08B /* MQTTManager.swift in Sources */,
 			);
