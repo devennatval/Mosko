@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class PondViewModel: ObservableObject {
+    @Published var mqttManager = MQTTManager.shared()
+    
     @Published var pondName: String
     @Published var fishType: String
     

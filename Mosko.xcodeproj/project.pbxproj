@@ -31,6 +31,9 @@
 		E23AE48C2779B6C00018F08B /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48B2779B6C00018F08B /* CocoaAsyncSocket */; };
 		E23AE48F2779B6DE0018F08B /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE48E2779B6DE0018F08B /* CocoaMQTT */; };
 		E23AE4912779B6DE0018F08B /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = E23AE4902779B6DE0018F08B /* CocoaMQTTWebSocket */; };
+		E2E634132781C79B00D43F49 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E634122781C79B00D43F49 /* NotificationManager.swift */; };
+		E2E634162781E7F400D43F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E634152781E7F400D43F49 /* AppDelegate.swift */; };
+		E2E634182781EAB100D43F49 /* RKMQTTConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E634172781EAB100D43F49 /* RKMQTTConnectionManager.swift */; };
 		E2EB87CF277E145A0081CE1C /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87CE277E145A0081CE1C /* OnboardingData.swift */; };
 		E2EB87D1277E16DB0081CE1C /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87D0277E16DB0081CE1C /* ButtonsView.swift */; };
 		E2EB87D4277E1D710081CE1C /* TabDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */; };
@@ -62,6 +65,9 @@
 		E23AE4372779AEBB0018F08B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E23AE4392779AEBB0018F08B /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		E2E634122781C79B00D43F49 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		E2E634152781E7F400D43F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E2E634172781EAB100D43F49 /* RKMQTTConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMQTTConnectionManager.swift; sourceTree = "<group>"; };
 		E2EB87CE277E145A0081CE1C /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		E2EB87D0277E16DB0081CE1C /* ButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabDetailsView.swift; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 		E23AE3DC2779AC030018F08B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E2E634142781E6B200D43F49 /* User Default */,
+				E2E634112781C79B00D43F49 /* Notification */,
 				E23AE3FF2779AD690018F08B /* Chart */,
 				E23AE3FA2779AD690018F08B /* Models */,
 				E23AE3FC2779AD690018F08B /* MQTT */,
@@ -152,9 +160,8 @@
 		E23AE3DD2779AC110018F08B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				E23AE4222779AE370018F08B /* Common */,
 				E23AE4202779AE370018F08B /* Main */,
-				E23AE4242779AE370018F08B /* OnBoarding */,
+				E23AE4242779AE370018F08B /* Onboarding Page */,
 				E23AE4262779AE370018F08B /* Pond Page */,
 				E23AE41B2779AE370018F08B /* Settings Page */,
 			);
@@ -186,6 +193,7 @@
 			children = (
 				E23AE3FD2779AD690018F08B /* MQTTAppState.swift */,
 				E23AE3FE2779AD690018F08B /* MQTTManager.swift */,
+				E2E634172781EAB100D43F49 /* RKMQTTConnectionManager.swift */,
 			);
 			path = MQTT;
 			sourceTree = "<group>";
@@ -220,19 +228,12 @@
 			isa = PBXGroup;
 			children = (
 				E23AE4212779AE370018F08B /* moskoApp.swift */,
+				E2E634152781E7F400D43F49 /* AppDelegate.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		E23AE4222779AE370018F08B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				E23AE4232779AE370018F08B /* UDHelper.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		E23AE4242779AE370018F08B /* OnBoarding */ = {
+		E23AE4242779AE370018F08B /* Onboarding Page */ = {
 			isa = PBXGroup;
 			children = (
 				E23AE4252779AE370018F08B /* OnBoardingView.swift */,
@@ -241,7 +242,7 @@
 				E2EB87D3277E1D710081CE1C /* PageTabView.swift */,
 				E2EB87D2277E1D710081CE1C /* TabDetailsView.swift */,
 			);
-			path = OnBoarding;
+			path = "Onboarding Page";
 			sourceTree = "<group>";
 		};
 		E23AE4262779AE370018F08B /* Pond Page */ = {
@@ -292,6 +293,22 @@
 				E23AE43B2779AEBB0018F08B /* WeatherViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		E2E634112781C79B00D43F49 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				E2E634122781C79B00D43F49 /* NotificationManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		E2E634142781E6B200D43F49 /* User Default */ = {
+			isa = PBXGroup;
+			children = (
+				E23AE4232779AE370018F08B /* UDHelper.swift */,
+			);
+			path = "User Default";
 			sourceTree = "<group>";
 		};
 		F626EEC64F290A5A7109C6F7 /* Pods */ = {
@@ -426,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E634162781E7F400D43F49 /* AppDelegate.swift in Sources */,
 				E23AE42D2779AE370018F08B /* UDHelper.swift in Sources */,
 				E23AE4412779AEBB0018F08B /* WeatherViewModel.swift in Sources */,
 				E23AE4292779AE370018F08B /* SettingsView.swift in Sources */,
@@ -437,6 +455,7 @@
 				E23AE4302779AE370018F08B /* PondView.swift in Sources */,
 				E23AE4042779AD6A0018F08B /* HistoryChartView.swift in Sources */,
 				E23AE42C2779AE370018F08B /* moskoApp.swift in Sources */,
+				E2E634182781EAB100D43F49 /* RKMQTTConnectionManager.swift in Sources */,
 				E2EB87D5277E1D710081CE1C /* PageTabView.swift in Sources */,
 				E23AE43C2779AEBB0018F08B /* WeatherFetchedData.swift in Sources */,
 				E2EB87D4277E1D710081CE1C /* TabDetailsView.swift in Sources */,
@@ -448,6 +467,7 @@
 				E2EB87D1277E16DB0081CE1C /* ButtonsView.swift in Sources */,
 				E23AE43E2779AEBB0018F08B /* APIRequest.swift in Sources */,
 				E23AE4032779AD6A0018F08B /* MQTTManager.swift in Sources */,
+				E2E634132781C79B00D43F49 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

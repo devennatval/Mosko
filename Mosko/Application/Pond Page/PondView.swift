@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PondView: View {
-    @StateObject var mqttManager = MQTTManager.shared()
     @ObservedObject var pondViewModel = PondViewModel()
     
     @State var historySelection:Int = 1
     @State var isEditSetting: Bool = false
-    @State var selectedItem = ""
+    @State var selectedItem = " "
 
+    // MARK: Generate Dummy Data
     func publishloop() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            mqttManager.publish(with: "Pond/" + String(Double.random(in: pondViewModel.underLimit..<pondViewModel.upperLimit))+"/"+["Idle","Heating","Cooling"].randomElement()!)
+            pondViewModel.mqttManager.publish(with: "Pond/" + String(Double.random(in: 30..<31))+"/"+["Idle","Heating","Cooling"].randomElement()!)
             publishloop()
         }
         
@@ -29,7 +29,7 @@ struct PondView: View {
                 HStack {
                     Image(systemName: "circle.fill")
                         .foregroundColor(
-                            mqttManager.currentAppState.appConnectionState.isConnected ? .green : .red
+                            pondViewModel.mqttManager.currentAppState.appConnectionState.isConnected ? .green : .red
                         )
                     Text(pondViewModel.pondName)
                         .font(.system(.title2))
@@ -40,22 +40,22 @@ struct PondView: View {
                 }
                 .font(.system(.title3))
                 HStack {
-                    Image(systemName: (mqttManager.currentAppState.action == "Cooling" ? "snowflake" : mqttManager.currentAppState.action == "Heating" ? "flame" : "zzz"))
+                    Image(systemName: (pondViewModel.mqttManager.currentAppState.action == "Cooling" ? "snowflake" : pondViewModel.mqttManager.currentAppState.action == "Heating" ? "flame" : "zzz"))
                         .foregroundColor(
-                            mqttManager.currentAppState.action == "Cooling" ? .blue : mqttManager.currentAppState.action == "Heating" ? .red : .black
+                            pondViewModel.mqttManager.currentAppState.action == "Cooling" ? .blue : pondViewModel.mqttManager.currentAppState.action == "Heating" ? .red : .black
                         )
-                    Text(mqttManager.currentAppState.action)
+                    Text(pondViewModel.mqttManager.currentAppState.action)
                 }
                 Spacer()
 //                HStack{
-                    Text((mqttManager.currentAppState.temperature.prefix(4)) + "ºC")
+                Text((pondViewModel.mqttManager.currentAppState.temperature.prefix(4)) + "ºC")
                     .font(.system(.title))
 //                }
                 HStack {
                     Spacer()
-                    Text("H: 20º")
+                    Text("H: \(String(format: "%.1f", pondViewModel.mqttManager.currentAppState.maxTemp))")
                     Spacer()
-                    Text("L: 30º")
+                    Text("L: \(String(format: "%.1f", pondViewModel.mqttManager.currentAppState.minTemp))")
                     Spacer()
                 }
                 .padding(.horizontal, 100)
@@ -69,12 +69,13 @@ struct PondView: View {
                             Text("Days").tag(1)
                         }
                         .pickerStyle(.segmented)
+                        Text(selectedItem)
                         if historySelection == 1 {
-                            HistoryChartView(entries: Temperature.dataEntriesForHour( temperature: mqttManager.currentAppState.historyTemperature))
+                            HistoryChartView(entries: Temperature.dataEntriesForHour( temperature: pondViewModel.mqttManager.currentAppState.historyTemperature), selectedItem: $selectedItem)
                                 .frame(height: 300)
-                            Text(selectedItem)
                         } else if historySelection == 0 {
-                            HistoryChartView(entries: Temperature.dataEntriesForHour( temperature: mqttManager.currentAppState.historyTemperature))
+                            HistoryChartView(entries: Temperature.dataEntriesForDay( temperature: pondViewModel.mqttManager.currentAppState.historyTemperature), selectedItem: $selectedItem)
+                                .frame(height: 300)
                         }
                     }
                     
@@ -107,14 +108,19 @@ struct PondView: View {
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
-                mqttManager.initializeMQTT(username: UDHelper.sharedUD.getUsername(), password: UDHelper.sharedUD.getPassword())
-                mqttManager.connect()
+                pondViewModel.mqttManager.initializeMQTT(username: UDHelper.sharedUD.getUsername(), password: UDHelper.sharedUD.getPassword())
+                pondViewModel.mqttManager.connect()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+10) {
+                if pondViewModel.mqttManager.currentAppState.action == "Off" {
+                    NotificationManager.sharedNM.createLocalNotification(condition: "Offline")
+                }
             }
             DispatchQueue.main.asyncAfter(deadline: .now()+2) {
                 publishloop()
             }
         }
-        .environmentObject(mqttManager)
+        .environmentObject(pondViewModel.mqttManager)
     }
 }
 

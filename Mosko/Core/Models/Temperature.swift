@@ -16,9 +16,18 @@ struct Temperature: Encodable, Decodable {
     
     static func dataEntriesForHour(temperature: [Temperature]) -> [ChartDataEntry] {
         let calendar = Calendar.current
-        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
-        let sortTemp = temperature.sorted { $0.date < $1.date}
-        let minuteTemperature = sortTemp.filter{$0.date > hourAgo}
+        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date()) ?? Date()
+        var minuteTemperature = temperature.filter{$0.date > hourAgo}
+        minuteTemperature.sort { $0.date < $1.date}
+        return minuteTemperature.map{
+            ChartDataEntry(x: $0.date.timeIntervalSince1970 , y: $0.temperature)
+        }
+    }
+    static func dataEntriesForDay(temperature: [Temperature]) -> [ChartDataEntry] {
+        let calendar = Calendar.current
+        let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        var minuteTemperature = temperature.filter{$0.date > dayAgo && ($0.minute == 0 || $0.minute == 30)}
+        minuteTemperature.sort { $0.date < $1.date}
         return minuteTemperature.map{
             ChartDataEntry(x: $0.date.timeIntervalSince1970 , y: $0.temperature)
         }

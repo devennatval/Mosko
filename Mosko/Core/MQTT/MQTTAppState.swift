@@ -56,6 +56,8 @@ final class MQTTAppState: ObservableObject {
         }
     }
     @Published var temperature: String = "--.-"
+    @Published var minTemp: Double = 0.0
+    @Published var maxTemp: Double = 0.0
     @Published var action: String = "Off"
     
     private var receivedMessages: [String] = []
@@ -65,7 +67,7 @@ final class MQTTAppState: ObservableObject {
         
         if receivedMessages[0] == "Pond" {
             let date = Date()
-            var calendar = Calendar.current
+            let calendar = Calendar.current
             
             let hour = calendar.component(.hour, from: date)
             let minute = calendar.component(.minute, from: date)
@@ -79,7 +81,24 @@ final class MQTTAppState: ObservableObject {
                 historyTemperature.removeAll(where: {$0.hour == hour && $0.minute == minute})
                 historyTemperature.append(Temperature(date: date, hour: hour, minute: minute, temperature: Double(temperature) ?? 0.0))
             }
+            
+            let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date()) ?? Date()
+            var minuteTemperature = historyTemperature.filter{$0.date > hourAgo}
+            minuteTemperature.sort(by: { $0.temperature < $1.temperature})
+            minTemp = minuteTemperature.first?.temperature ?? 0.0
+            maxTemp = minuteTemperature.last?.temperature ?? 0.0
+            
+            if NotificationManager.sharedNM.blastReady == true {
+                if (Double(temperature) ?? 0.0) > UDHelper.sharedUD.getUpperLimit() {
+                    NotificationManager.sharedNM.createLocalNotification(condition: "Upperlimit")
+                } else if (Double(temperature) ?? 0.0) < UDHelper.sharedUD.getUnderLimit() {
+                    NotificationManager.sharedNM.createLocalNotification(condition: "Underlimit")
+                }
+            }
+            
         }
+        
+        
     }
 
     func clearData() {

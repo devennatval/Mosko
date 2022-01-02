@@ -8,6 +8,7 @@
 import Foundation
 enum UDKey: String{
     case newUser
+    case firstTimeSetting
     
     case username
     case password
@@ -43,6 +44,15 @@ class UDHelper {
         setUD(value: !new, key: UDKey.newUser.rawValue)
     }
     
+    func isDoneSetting() -> Bool {
+        return !defaults.bool(forKey: UDKey.firstTimeSetting.rawValue)
+    }
+    
+    func setDoneSetting(done: Bool) {
+        setUD(value: !done, key: UDKey.firstTimeSetting.rawValue)
+    }
+    
+    
     func setUsername(username: String) {
         setUD(value: username, key: UDKey.username.rawValue)
     }
@@ -72,7 +82,7 @@ class UDHelper {
     }
     
     func getPondName() -> String {
-        return defaults.string(forKey: UDKey.pondName.rawValue) ?? "My Pond"
+        return defaults.string(forKey: UDKey.pondName.rawValue) ?? ""
     }
     
     func setFishType(fishType: String) {
@@ -80,7 +90,7 @@ class UDHelper {
     }
     
     func getFishType() -> String {
-        return defaults.string(forKey: UDKey.fishType.rawValue) ?? "My Fish"
+        return defaults.string(forKey: UDKey.fishType.rawValue) ?? ""
     }
     
     func setUpperLimit(upperLimit: Double) {
@@ -88,7 +98,7 @@ class UDHelper {
     }
     
     func getUpperLimit() -> Double {
-        return defaults.double(forKey: UDKey.upperLimit.rawValue) == 0.0 ? 30 : defaults.double(forKey: UDKey.upperLimit.rawValue)
+        return defaults.double(forKey: UDKey.upperLimit.rawValue) == 0.0 ? 35 : defaults.double(forKey: UDKey.upperLimit.rawValue)
     }
     
     func setUnderLimit(underLimit: Double) {

@@ -19,7 +19,7 @@ struct PageTabView: View {
                 if index != 3 {
                     TabDetailsView(index: index)
                 }
-                else {
+                else if index == 3 {
                     VStack {
                         Spacer()
                         Text("Connect Device")
@@ -47,12 +47,11 @@ struct PageTabView: View {
                                 UDHelper.sharedUD.setUsername(username: topic.components(separatedBy: "/")[0])
                                 UDHelper.sharedUD.setPassword(password: password)
                                 UDHelper.sharedUD.setTopic(topic: topic)
-                                UDHelper.sharedUD.setNewUser(new: false)
-                                print(UDHelper.sharedUD.getUsername())
-                                print(UDHelper.sharedUD.getPassword())
-                                print(UDHelper.sharedUD.getTopic())
-                                print(UDHelper.sharedUD.isNewUser())
-
+                                
+                                
+                                UDHelper.sharedUD.setAutoCool(autoCool: true)
+                                UDHelper.sharedUD.setAutoHeat(autoHeat: true)
+                                NotificationManager.sharedNM.requestAuthorization()
                                 withAnimation {
                                     isOnboardingViewShowing.toggle()
                                 }
@@ -70,6 +69,8 @@ struct PageTabView: View {
                         Spacer()
 
                     }
+                } else if index == 4 {
+                    
                 }
             }
         }

@@ -63,6 +63,9 @@ struct SettingsView: View {
                     if mqttManager.currentAppState.action != "Off" {
                         if pondViewModel.pondName != "" && pondViewModel.fishType != "" {
                             pondViewModel.saveData()
+                            if UDHelper.sharedUD.isNewUser() {
+                                UDHelper.sharedUD.setNewUser(new: false)
+                            }
                             mqttManager.publish(with: "Settings/\(String(format: "%.1f", pondViewModel.underLimit))/\(String(format: "%.1f", pondViewModel.upperLimit))/\(pondViewModel.autoCool ? 1 : 0)/\(pondViewModel.autoHeat ? 1 : 0)")
                             dismiss.callAsFunction()
                         }
